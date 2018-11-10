@@ -37,12 +37,7 @@ def score(dice):
     result_score = 0
 
     # count the quantity of each number in list
-    qty_dict = {}
-    for num in dice:
-        if num in qty_dict:
-            qty_dict[num] += 1
-        else:
-            qty_dict[num] = 1
+    qty_dict = quantity_of_numbers(dice)
 
     # count the scope using dictionary with quantity of numbers
     for num in qty_dict.keys():
@@ -62,6 +57,17 @@ def score(dice):
             result_score += 1000 + 100 * (qty_dict[num] - 3)
 
     return result_score
+
+
+def quantity_of_numbers(dice):
+    qty_dict = {}
+    for num in dice:
+        if num in qty_dict:
+            qty_dict[num] += 1
+        else:
+            qty_dict[num] = 1
+    return qty_dict
+
 
 class AboutScoringProject(Koan):
     def test_score_of_an_empty_list_is_zero(self):
